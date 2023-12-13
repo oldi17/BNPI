@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="bnpi_product_action" model="ir.actions.act_window">
+    <field name="name">Товары</field>
+    <field name="res_model">bnpi_product</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Создайте свой первый товар!
+      </p>
+    </field>
+  </record>
+</odoo>

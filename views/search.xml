@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="bnpi_product_view_search" model="ir.ui.view">
+    <field name="name">bnpi Product search</field>
+    <field name="model">bnpi_product</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+        <field name="description"/>
+        <filter string="Без описания"
+          name="without_description"
+          domain="[('description','=',False)]"/>
+      </search>
+      </field>
+  </record>
+</odoo>

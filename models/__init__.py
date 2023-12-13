@@ -1,0 +1,1 @@
+from . import bnpi_product

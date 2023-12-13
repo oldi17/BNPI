@@ -1,1 +1,1 @@
-# BNPI
+# bnpi

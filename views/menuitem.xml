@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <menuitem id="bnpi_menu_root" name="BNPI" sequence="0">
+    <menuitem id="bnpi_menu_product" name="Товар" action="bnpi_product_action"/>
+  </menuitem>
+</odoo>
