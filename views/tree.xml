@@ -6,6 +6,7 @@
     <field name="arch" type="xml">
       <tree>
         <field name="name"/>
+        <field name="short_description"/>
       </tree>
     </field>
   </record>
@@ -31,6 +32,20 @@
         <field name="create_date" string="Дата"/>
         <field name="description"/>
         <field name="value"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="bnpi_marked_product_view_tree" model="ir.ui.view">
+    <field name="name">BNPI Marked Product List</field>
+    <field name="model">bnpi_marked_product</field>
+    <field name="arch" type="xml">
+      <tree create="false">
+        <field name="name"/>
+        <field name="product_id"/>
+        <field name="last_WH"/>
+        <field name="last_status"/>
+        <field name="total"/>
       </tree>
     </field>
   </record>

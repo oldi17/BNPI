@@ -11,8 +11,8 @@
 					<field name="create_date" attrs="{'invisible': 1}"/>
 					<field name="name"/>
 					<field name="description"/>
-					<field name="act_ids" attrs="{'invisible': [('create_date', '=', False)]}"/>
-					<field name="marked_product_ids" attrs="{'invisible': [('create_date', '=', False)]}"/>
+					<field name="act_ids" attrs="{'invisible': [('create_date', '=', False)], 'readonly': 1}"/>
+					<field name="marked_product_ids" attrs="{'invisible': [('create_date', '=', False)], 'readonly': 1}"/>
 				</group>
 			</sheet>
 			</form>
@@ -25,20 +25,32 @@
         <field name="arch" type="xml" >
 			<form>
 			<header>
-				<!-- <field name="state"/> -->
+				<field name="create_date" attrs="{'invisible': 1}"/>
+				<button name="action_confirm" type="object" string="Подтвердить" attrs="{'invisible': ['|',('create_date', '=', False),('confirmed', '=', True)]}"/>
 			</header>
 			<sheet>
 				<group>
-				<field name="date"/>
-				<field name="status"/>
-				<field name="oldWH" attrs="{'invisible': [('status', 'in', ['покупка'])], 'required': [('status', 'not in', ['покупка'])]}"/>
-				<field name="newWH"/>
-				<field name="product_id" attrs="{'invisible': [('status', 'not in', ['покупка'])], 'required': [('status', 'in', ['покупка'])]}"/>
-				<field name="count" attrs="{'invisible': [('status', 'not in', ['покупка'])], 'required': [('status', 'in', ['покупка'])]}"/>
-				<field name="marked_product_ids" widget="many2many_tags" attrs="{'invisible': [('status', 'in', ['покупка'])], 'required': [('status', 'not in', ['покупка'])]}"/>
-				<field name="account_ids" widget="one2many_tags"/>
-				<field name="confirmed"/>
+					<field name="date"/>
+					<field name="confirmed" attrs="{'invisible': 1}"/>
 				</group>
+				<group>
+					<field name="status"/>
+				</group>
+				<group>
+					<group>
+						<field name="oldWH" attrs="{'invisible': [('status', 'in', ['покупка'])], 'required': [('status', 'not in', ['покупка'])]}"/>
+					</group>
+					<group>
+						<field name="newWH"/>
+					</group>
+				</group>
+				<group>
+					<field name="product_id" attrs="{'invisible': [('status', 'not in', ['покупка'])], 'required': [('status', 'in', ['покупка'])]}"/>
+					<field name="count" attrs="{'invisible': [('status', 'not in', ['покупка'])], 'required': [('status', 'in', ['покупка'])]}"/>
+					<field name="marked_product_ids" widget="many2many_tags" attrs="{'invisible': [('status', 'in', ['покупка'])], 'required': [('status', 'not in', ['покупка'])]}"/>
+					<field name="marked_product_ids" widget="many2many_tags" attrs="{'invisible': ['|',('create_date', '=', False), ('status', 'not in', ['покупка'])]}"/>
+				</group>
+				<field name="account_ids" widget="one2many_tags" string=""/>
 			</sheet>
 			</form>
         </field>
@@ -63,14 +75,19 @@
         <field name="name">bnpi.marked.product.form</field>
         <field name="model">bnpi_marked_product</field>
         <field name="arch" type="xml" >
-			<form>
+			<form create="false" edit="false">
 			<sheet>
+				<h1><field name="name"/></h1>
 				<group>
-				<field name="name" attrs="{'readonly ': 1}"/>
-				<field name="product_id" attrs="{'readonly ': 1}"/>
-				<field name="last_status" attrs="{'readonly ': 1}"/>
-				<field name="product_id" attrs="{'readonly ': 1}"/>
-				<field name="account_ids" attrs="{'readonly ': 1}"/>
+					<field name="product_id" />
+				</group>
+				<group>
+					<field name="last_WH" />
+					<field name="last_status" />
+				</group>
+				<field name="account_ids" options="{'no_create': True, 'no_create_edit':True}"/>
+				<group class="oe_subtotal_footer oe_right" colspan="2">
+					<field name="total" class="float-right text-right" />
 				</group>
 			</sheet>
 			</form>

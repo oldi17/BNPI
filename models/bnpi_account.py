@@ -5,6 +5,6 @@ class AccountModel(models.Model):
     _description = "Счет"
     _order = "create_date"
 
-    act_id = fields.Many2one('bnpi_act', string='Акт')
-    description = fields.Text('Затраты/Приходы', required=True,)
+    act_id = fields.Many2one('bnpi_act', string='Акт', ondelete='cascade')
+    description = fields.Char('Затраты/Приходы', required=True,)
     value = fields.Integer('Значение, Р.', required=True,)

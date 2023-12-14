@@ -2,6 +2,7 @@
     'name': 'bnpi',
     'version': '1.0',
     'application': True,
+    'license': 'LGPL-3',
     'data': [
       'security/groups.xml',
       'security/ir.model.access.csv',
