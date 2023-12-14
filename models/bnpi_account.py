@@ -1,0 +1,10 @@
+from odoo import fields, models, api
+
+class AccountModel(models.Model):
+    _name = "bnpi_account"
+    _description = "Счет"
+    _order = "create_date"
+
+    act_id = fields.Many2one('bnpi_act', string='Акт')
+    description = fields.Text('Затраты/Приходы', required=True,)
+    value = fields.Integer('Значение, Р.', required=True,)

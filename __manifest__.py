@@ -9,6 +9,7 @@
       'views/menuitem.xml',
       'views/search.xml',
       'views/tree.xml',
+      'views/form.xml',
     #   'views/',
     ]
 }

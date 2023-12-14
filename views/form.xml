@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="bnpi_product_form" model="ir.ui.view">
+        <field name="name">bnpi.product.form</field>
+        <field name="model">bnpi_product</field>
+        <field name="arch" type="xml" >
+			<form>
+			<sheet>
+				<group>
+					<field name="create_date" attrs="{'invisible': 1}"/>
+					<field name="name"/>
+					<field name="description"/>
+					<field name="act_ids" attrs="{'invisible': [('create_date', '=', False)]}"/>
+					<field name="marked_product_ids" attrs="{'invisible': [('create_date', '=', False)]}"/>
+				</group>
+			</sheet>
+			</form>
+        </field>
+    </record>
+
+    <record id="bnpi_act_form" model="ir.ui.view">
+        <field name="name">bnpi.act.form</field>
+        <field name="model">bnpi_act</field>
+        <field name="arch" type="xml" >
+			<form>
+			<header>
+				<!-- <field name="state"/> -->
+			</header>
+			<sheet>
+				<group>
+				<field name="date"/>
+				<field name="status"/>
+				<field name="oldWH" attrs="{'invisible': [('status', 'in', ['покупка'])], 'required': [('status', 'not in', ['покупка'])]}"/>
+				<field name="newWH"/>
+				<field name="product_id" attrs="{'invisible': [('status', 'not in', ['покупка'])], 'required': [('status', 'in', ['покупка'])]}"/>
+				<field name="count" attrs="{'invisible': [('status', 'not in', ['покупка'])], 'required': [('status', 'in', ['покупка'])]}"/>
+				<field name="marked_product_ids" widget="many2many_tags" attrs="{'invisible': [('status', 'in', ['покупка'])], 'required': [('status', 'not in', ['покупка'])]}"/>
+				<field name="account_ids" widget="one2many_tags"/>
+				<field name="confirmed"/>
+				</group>
+			</sheet>
+			</form>
+        </field>
+    </record>
+
+	<record id="bnpi_account_form" model="ir.ui.view">
+        <field name="name">bnpi.account.form</field>
+        <field name="model">bnpi_account</field>
+        <field name="arch" type="xml" >
+			<form>
+			<sheet>
+				<group>
+					<field name="description"/>
+					<field name="value"/>
+				</group>
+			</sheet>
+			</form>
+        </field>
+    </record>
+
+	<record id="bnpi_marked_product_form" model="ir.ui.view">
+        <field name="name">bnpi.marked.product.form</field>
+        <field name="model">bnpi_marked_product</field>
+        <field name="arch" type="xml" >
+			<form>
+			<sheet>
+				<group>
+				<field name="name" attrs="{'readonly ': 1}"/>
+				<field name="product_id" attrs="{'readonly ': 1}"/>
+				<field name="last_status" attrs="{'readonly ': 1}"/>
+				<field name="product_id" attrs="{'readonly ': 1}"/>
+				<field name="account_ids" attrs="{'readonly ': 1}"/>
+				</group>
+			</sheet>
+			</form>
+        </field>
+    </record>
+</odoo>

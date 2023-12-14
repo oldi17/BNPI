@@ -1,3 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_bnpi_product,access.bnpi.product,model_bnpi_product,,1,0,0,0
-access_bnpi_product_sellers,access.bnpi.product,model_bnpi_product,group_sellers,1,1,1,1
+access_bnpi_product_sellers,access.bnpi.product.sellers,model_bnpi_product,group_sellers,1,1,1,1
+access_bnpi_act,access.bnpi.act,model_bnpi_act,,1,0,0,0
+access_bnpi_act_sellers,access.bnpi.act,model_bnpi_act,group_sellers,1,1,1,1
+access_bnpi_marked_product,access.bnpi.marked_product,model_bnpi_marked_product,,1,0,0,0
+access_bnpi_marked_product_sellers,access.bnpi.marked_product,model_bnpi_marked_product,group_sellers,1,1,1,1
+access_bnpi_account,access.bnpi.account,model_bnpi_account,,1,0,0,0
+access_bnpi_account_sellers,access.bnpi.account,model_bnpi_account,group_sellers,1,1,1,1

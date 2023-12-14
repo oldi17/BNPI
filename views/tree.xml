@@ -9,4 +9,30 @@
       </tree>
     </field>
   </record>
+  
+  <record id="bnpi_act_view_tree" model="ir.ui.view">
+    <field name="name">BNPI Act List</field>
+    <field name="model">bnpi_act</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="date"/>
+        <field name="status"/>
+        <field name="product_id"/>
+        <field name="marked_product_ids"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="bnpi_account_view_tree" model="ir.ui.view">
+    <field name="name">BNPI Account List</field>
+    <field name="model">bnpi_account</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="create_date" string="Дата"/>
+        <field name="description"/>
+        <field name="value"/>
+      </tree>
+    </field>
+  </record>
+
 </odoo>
