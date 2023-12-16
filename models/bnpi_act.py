@@ -1,11 +1,10 @@
 from odoo import fields, models, api
 from odoo.exceptions import ValidationError
-import logging
 
 class ActModel(models.Model):
     _name = "bnpi_act"
     _description = "Акт"
-    _order = 'id desc'
+    _order = 'confirmed, id desc'
     date = fields.Date('Дата документа', required=True, default=fields.Date.today())
     status = fields.Selection(string='Назначаемый статус', selection=[
         ('покупка', 'Покупка'),
@@ -37,11 +36,10 @@ class ActModel(models.Model):
         return res
     
     def unlink(self):
-        #your logic goes here
         marked_product_obj = self.env['bnpi_marked_product']
         for act in self:
             if act.status == 'покупка':
-                marked_products = marked_product_obj.search(['id','in', act.marked_product_ids.ids])
+                marked_products = marked_product_obj.search([('id','in', act.marked_product_ids.ids)])
                 marked_products.unlink()
         return super(ActModel,self).unlink()
     

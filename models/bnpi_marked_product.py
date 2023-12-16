@@ -3,6 +3,7 @@ from odoo import fields, models, api
 class MarkedProductModel(models.Model):
     _name = "bnpi_marked_product"
     _description = "Товар"
+    _order = "id desc"
 
     name = fields.Char(compute='_compute_name', string='Наименование')
     product_id = fields.Many2one('bnpi_product', required=True, string='Товар', ondelete="cascade")

@@ -13,4 +13,40 @@
       </search>
       </field>
   </record>
+  <record id="bnpi_act_view_search" model="ir.ui.view">
+    <field name="name">bnpi Act search</field>
+    <field name="model">bnpi_act</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="product_id"/>
+        <filter string="Не подтвержденные" name="active" domain="[('confirmed', '=',False)]"/>
+        <filter string="Покупка" name="status_buy" domain="[('status', '=','покупка')]"/>
+        <filter string="Транспортировка" name="status_trans" domain="[('status', '=','транспортировка')]"/>
+        <filter string="Продажа" name="status_sell" domain="[('status', '=','продажа')]"/>
+        <group expand="0" string="Группировать">
+            <filter string="Товар" name="product" context="{'group_by': 'product_id'}"/>
+            <filter string="Статус" name="status" context="{'group_by': 'status'}"/>
+        </group>
+      </search>
+      </field>
+  </record>
+  <record id="bnpi_marked_product_view_search" model="ir.ui.view">
+    <field name="name">bnpi Marked Product search</field>
+    <field name="model">bnpi_marked_product</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+        <field name="product_id"/>
+        <field name="last_WH"/>
+        <filter string="Закупленные" name="last_status_buy" domain="[('last_status', '=','Куплен')]"/>
+        <filter string="Перевезенные" name="last_status_trans" domain="[('last_status', '=','Транспортирован')]"/>
+        <filter string="Проданные" name="last_status_sell" domain="[('last_status', '=','Продан')]"/>
+        <group expand="0" string="Группировать">
+            <filter string="Товар" name="product_id" context="{'group_by': 'product_id'}"/>
+            <filter string="Склад" name="last_WH" context="{'group_by': 'last_WH'}"/>
+            <filter string="Статус" name="last_status" context="{'group_by': 'last_status'}"/>
+        </group>
+      </search>
+      </field>
+  </record>
 </odoo>
